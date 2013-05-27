@@ -6,13 +6,15 @@
 //  Copyright (c) 2013 James Snee. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "Library_VC.h"
+#import "Riff_Manager.h"
+#import "Riff.h"
 
-@interface SecondViewController ()
+@interface Library_VC ()
 
 @end
 
-@implementation SecondViewController
+@implementation Library_VC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +29,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+	NSArray *fetched = [Riff_Manager get_all_riffs];
+	for(Riff *riff in fetched){
+		NSLog(@"RIFF: %@ LINK: %@", [riff name], [riff link]);
+	}
 }
 
 - (void)didReceiveMemoryWarning
