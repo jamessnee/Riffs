@@ -21,10 +21,22 @@
 @property (strong, nonatomic) IBOutlet UITextField *clip_title;
 @property (strong, nonatomic) IBOutlet UITextField *tags;
 @property (strong, nonatomic) IBOutlet UITextField *key;
+@property (strong, nonatomic) IBOutlet UILabel *time;
+	// Saving
+@property (strong, nonatomic) IBOutlet UIButton *save;
+@property (strong, nonatomic) IBOutlet UIView *save_details;
+@property (strong, nonatomic) IBOutlet UIButton *cancel;
 
+- (void)update_time;
+
+// Callbacks
 - (IBAction)start_recording:(id)sender;
 - (IBAction)stop:(id)sender;
 - (IBAction)start_playback:(id)sender;
 - (IBAction)save:(id)sender;
+- (IBAction)cancel_save:(id)sender;
+
+// Convenience
+- (void)reset_save;
 
 @end

@@ -28,9 +28,6 @@
 	[managed_context save:&error];
 	if(error){
 		NSLog(@"ERROR: %@",[error description]);
-	}else{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Riffs" message:@"Riff saved!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
 	}
 	
 	return YES;

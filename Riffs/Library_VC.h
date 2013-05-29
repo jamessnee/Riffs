@@ -10,4 +10,6 @@
 
 @interface Library_VC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *library_table;
+
 @end

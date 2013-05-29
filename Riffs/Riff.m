@@ -2,7 +2,7 @@
 //  Riff.m
 //  Riffs
 //
-//  Created by James Snee on 27/05/2013.
+//  Created by James Snee on 29/05/2013.
 //  Copyright (c) 2013 James Snee. All rights reserved.
 //
 
@@ -11,9 +11,10 @@
 
 @implementation Riff
 
-@dynamic name;
 @dynamic key;
-@dynamic tags;
 @dynamic link;
+@dynamic name;
+@dynamic tags;
+@dynamic catagory;
 
 @end

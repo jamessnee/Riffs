@@ -9,10 +9,12 @@
 #import "Library_VC.h"
 #import "Riff_Manager.h"
 #import "Riff.h"
+#import "Library_Cell.h"
 
 @interface Library_VC ()
 
 @property (strong, nonatomic) NSArray *all_riffs;
+@property int colour_counter;
 
 @end
 
@@ -24,6 +26,7 @@
     if (self) {
 		self.title = @"Library";
 		self.tabBarItem.image = [UIImage imageNamed:@"second"];
+		self.colour_counter = 0;
     }
     return self;
 }
@@ -31,23 +34,51 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+}
+
+- (void)viewDidAppear:(BOOL)animated{
 	NSArray *fetched = [Riff_Manager get_all_riffs];
 	[self setAll_riffs:fetched];
+	
+	[[self library_table] reloadData];
 }
 
 #pragma mark - UITableView Data Source
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	NSString *identifier = @"RIFFS_LIBRARY";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+	Library_Cell *cell = (Library_Cell *)[tableView dequeueReusableCellWithIdentifier:identifier];
 	if(!cell){
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"Library_Cell" owner:nil options:nil];
+        for(id currentObject in topLevelObjects)
+        {
+            if([currentObject isKindOfClass:[Library_Cell class]])
+            {
+                cell = (Library_Cell *)currentObject;
+                break;
+            }
+        }
 	}
+	
+	// Fill in the data
 	Riff *curr_riff = [[self all_riffs] objectAtIndex:[indexPath row]];
 	
-	[[cell textLabel] setText:[curr_riff name]];
-	[[cell detailTextLabel] setText:[curr_riff key]];
+	[[cell main_title] setText:[curr_riff name]];
+	[[cell sub_title_1] setText:[curr_riff key]];
+	[[cell sub_title_2] setText:[curr_riff tags]];
 	
+	if([self colour_counter] == 0)
+		[[cell background_image] setImage:[UIImage imageNamed:@"cell_LightBlue.png"]];
+	else if([self colour_counter] == 1)
+		[[cell background_image] setImage:[UIImage imageNamed:@"cell_DarkBlue.png"]];
+	else if([self colour_counter] == 2)
+		[[cell background_image] setImage:[UIImage imageNamed:@"cell_LightOrange.png"]];
+	else{
+		[[cell background_image] setImage:[UIImage imageNamed:@"cell_DarkOrange.png"]];
+		[self setColour_counter:0];
+	}
+	[self setColour_counter:[self colour_counter] + 1];
+
 	return cell;
 }
 
@@ -55,11 +86,15 @@
 	return [[self all_riffs] count];
 }
 
-#pragma mark - UITableView Delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	[[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 59.0f;
 }
 
+#pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	//[[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+}
 
 
 - (void)didReceiveMemoryWarning
