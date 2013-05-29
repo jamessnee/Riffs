@@ -22,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		self.title = NSLocalizedString(@"Second", @"Second");
+		self.title = @"Library";
 		self.tabBarItem.image = [UIImage imageNamed:@"second"];
     }
     return self;
@@ -53,6 +53,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	return [[self all_riffs] count];
+}
+
+#pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	[[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
 }
 
 
