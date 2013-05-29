@@ -67,13 +67,13 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">btn_Record.png</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="513475831">
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<string key="name">HelveticaNeue-Light</string>
 							<string key="family">Helvetica Neue</string>
 							<int key="traits">0</int>
 							<double key="pointSize">25</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="1061071693">
+						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">HelveticaNeue-Medium</string>
 							<double key="NSSize">25</double>
 							<int key="NSfFlags">16</int>
@@ -141,10 +141,9 @@
 					<object class="IBUIButton" id="914994121">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{200, 283}, {77, 77}}</string>
+						<string key="NSFrame">{{164, 253}, {77, 77}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -165,7 +164,7 @@
 					<object class="IBUIButton" id="220200290">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{98, 235}, {125, 125}}</string>
+						<string key="NSFrame">{{121, 253}, {77, 77}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="321297839"/>
@@ -183,8 +182,8 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">btn_Save.png</string>
 						</object>
-						<reference key="IBUIFontDescription" ref="513475831"/>
-						<reference key="IBUIFont" ref="1061071693"/>
+						<reference key="IBUIFontDescription" ref="930673749"/>
+						<reference key="IBUIFont" ref="285876786"/>
 					</object>
 					<object class="IBUILabel" id="555679048">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -648,11 +647,11 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="135454103"/>
 							<reference ref="321297839"/>
-							<reference ref="220200290"/>
 							<reference ref="672277677"/>
 							<reference ref="555679048"/>
 							<reference ref="914994121"/>
 							<reference ref="321829424"/>
+							<reference ref="220200290"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -899,7 +898,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="btn_Play.png">{77, 77}</string>
 			<string key="btn_Record.png">{165, 165}</string>
-			<string key="btn_Save.png">{125, 125}</string>
+			<string key="btn_Save.png">{77, 77}</string>
 			<string key="btn_Stop.png">{77, 77}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>

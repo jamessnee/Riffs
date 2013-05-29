@@ -166,7 +166,7 @@
 		[[self cancel] setHidden:NO];
 		
 		// Animate the SAVE button to new pos.
-		CGPoint new_center = CGPointMake([[self save] center].x - 52.0f, [[self save] center].y);
+		CGPoint new_center = CGPointMake([[self save] center].x - 42.0f, [[self save] center].y);
 		[UIView animateWithDuration:0.5 animations:^{
 			[self save].center = new_center;
 		}];
@@ -198,8 +198,13 @@
 	[[self cancel] setHidden:YES];
 	[[self save] setTitle:@"SAVE" forState:UIControlStateNormal];
 	
+	// If the keyboard's up, remove it
+	[[self clip_title] resignFirstResponder];
+	[[self key] resignFirstResponder];
+	[[self tags] resignFirstResponder];
+	
 	// Animate the SAVE button to original pos.
-	CGPoint new_center = CGPointMake([[self save] center].x + 52.0f, [[self save] center].y);
+	CGPoint new_center = CGPointMake([[self save] center].x + 42.0f, [[self save] center].y);
 	[UIView animateWithDuration:0.5 animations:^{
 		[self save].center = new_center;
 	}];

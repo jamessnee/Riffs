@@ -38,9 +38,20 @@
 
 - (void)viewDidAppear:(BOOL)animated{
 	NSArray *fetched = [Riff_Manager get_all_riffs];
-	[self setAll_riffs:fetched];
 	
-	[[self library_table] reloadData];
+	if([fetched count] != [[self all_riffs] count]){
+		[self setAll_riffs:fetched];
+		
+		//	[[self library_table] reloadData];
+		NSMutableArray *tableview_indexes = [[NSMutableArray alloc] init];
+		for(int i = 0; i < [fetched count]; i++){
+			[tableview_indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+		}
+		
+		[[self library_table] beginUpdates];
+		[[self library_table] insertRowsAtIndexPaths:tableview_indexes withRowAnimation:UITableViewRowAnimationLeft];
+		[[self library_table] endUpdates];
+	}
 }
 
 #pragma mark - UITableView Data Source
@@ -94,6 +105,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	//[[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+	Riff *curr_riff = [[self all_riffs] objectAtIndex:[indexPath row]];
+
+	NSError *error;
+	[self setTEMP_audio_player:[[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:[curr_riff link]]
+																	  error:&error]];
+	if(error)
+		NSLog(@"There was an error setting up the audio player");
+	
+	[[self TEMP_audio_player] setDelegate:self];
+	[[self TEMP_audio_player] play];
+}
+
+#pragma mark - AVAudioPlayer delegate
+- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+	NSLog(@"Playback finished");
 }
 
 

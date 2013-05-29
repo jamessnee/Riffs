@@ -11,21 +11,21 @@
 
 @interface Record_VC : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) AVAudioRecorder	*audio_recorder;
-@property (strong, nonatomic) AVAudioPlayer		*audio_player;
+@property (strong, nonatomic) AVAudioRecorder		*audio_recorder;
+@property (strong, nonatomic) AVAudioPlayer			*audio_player;
 
 // UI
-@property (strong, nonatomic) IBOutlet UIButton	*record;
-@property (strong, nonatomic) IBOutlet UIButton *start;
-@property (strong, nonatomic) IBOutlet UIButton *stop;
-@property (strong, nonatomic) IBOutlet UITextField *clip_title;
-@property (strong, nonatomic) IBOutlet UITextField *tags;
-@property (strong, nonatomic) IBOutlet UITextField *key;
-@property (strong, nonatomic) IBOutlet UILabel *time;
+@property (strong, nonatomic) IBOutlet UIButton		*record;
+@property (strong, nonatomic) IBOutlet UIButton		*start;
+@property (strong, nonatomic) IBOutlet UIButton		*stop;
+@property (strong, nonatomic) IBOutlet UITextField	*clip_title;
+@property (strong, nonatomic) IBOutlet UITextField	*tags;
+@property (strong, nonatomic) IBOutlet UITextField	*key;
+@property (strong, nonatomic) IBOutlet UILabel		*time;
 	// Saving
-@property (strong, nonatomic) IBOutlet UIButton *save;
-@property (strong, nonatomic) IBOutlet UIView *save_details;
-@property (strong, nonatomic) IBOutlet UIButton *cancel;
+@property (strong, nonatomic) IBOutlet UIButton		*save;
+@property (strong, nonatomic) IBOutlet UIView		*save_details;
+@property (strong, nonatomic) IBOutlet UIButton		*cancel;
 
 - (void)update_time;
 

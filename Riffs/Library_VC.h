@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface Library_VC : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface Library_VC : UIViewController <UITableViewDataSource, UITableViewDelegate, AVAudioPlayerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *library_table;
+@property (strong, nonatomic) AVAudioPlayer		*TEMP_audio_player;
 
 @end
