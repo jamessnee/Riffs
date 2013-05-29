@@ -12,6 +12,8 @@
 
 @interface Library_VC ()
 
+@property (strong, nonatomic) NSArray *all_riffs;
+
 @end
 
 @implementation Library_VC
@@ -29,14 +31,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
+	NSArray *fetched = [Riff_Manager get_all_riffs];
+	[self setAll_riffs:fetched];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-	NSArray *fetched = [Riff_Manager get_all_riffs];
-	for(Riff *riff in fetched){
-		NSLog(@"RIFF: %@ LINK: %@", [riff name], [riff link]);
+#pragma mark - UITableView Data Source
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+	NSString *identifier = @"RIFFS_LIBRARY";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+	if(!cell){
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
 	}
+	Riff *curr_riff = [[self all_riffs] objectAtIndex:[indexPath row]];
+	
+	[[cell textLabel] setText:[curr_riff name]];
+	[[cell detailTextLabel] setText:[curr_riff key]];
+	
+	return cell;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+	return [[self all_riffs] count];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
