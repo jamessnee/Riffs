@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface Record_VC : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate, UITextFieldDelegate>
+@interface Record_VC : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) AVAudioRecorder		*audio_recorder;
 @property (strong, nonatomic) AVAudioPlayer			*audio_player;
@@ -22,11 +22,14 @@
 @property (strong, nonatomic) IBOutlet UITextField	*tags;
 @property (strong, nonatomic) IBOutlet UITextField	*key;
 @property (strong, nonatomic) IBOutlet UILabel		*time;
+@property (strong, nonatomic) IBOutlet UILabel		*state;
 	// Saving
 @property (strong, nonatomic) IBOutlet UIButton		*save;
 @property (strong, nonatomic) IBOutlet UIView		*save_details;
 @property (strong, nonatomic) IBOutlet UIButton		*cancel;
 
+- (void)setup_ui;
+- (void)setup_audio_session;
 - (void)update_time;
 
 // Callbacks
